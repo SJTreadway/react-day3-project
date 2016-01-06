@@ -58,7 +58,7 @@
 	
 	var _ListContainer2 = _interopRequireDefault(_ListContainer);
 	
-	var _AddList = __webpack_require__(162);
+	var _AddList = __webpack_require__(163);
 	
 	var _AddList2 = _interopRequireDefault(_AddList);
 	
@@ -19719,7 +19719,7 @@
 	
 	var _List2 = _interopRequireDefault(_List);
 	
-	var _firebase = __webpack_require__(163);
+	var _firebase = __webpack_require__(162);
 	
 	var _firebase2 = _interopRequireDefault(_firebase);
 	
@@ -19924,67 +19924,6 @@
 
 /***/ },
 /* 162 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var AddList = _react2.default.createClass({
-		displayName: 'AddList',
-		getInitialState: function getInitialState() {
-			return {
-				listName: ''
-			};
-		},
-		handleChange: function handleChange(e) {
-			this.setState({
-				listName: e.target.value
-			});
-		},
-		handleSubmit: function handleSubmit(e) {
-			e.preventDefault();
-			this.props.add(this.state);
-			this.setState({
-				listName: ''
-			});
-		},
-		render: function render() {
-			return _react2.default.createElement(
-				'form',
-				{ className: 'col-sm-6', onSubmit: this.handleSubmit },
-				_react2.default.createElement(
-					'h3',
-					{ className: 'text-center' },
-					'Create New List'
-				),
-				_react2.default.createElement(
-					'p',
-					null,
-					'List Name:'
-				),
-				_react2.default.createElement('input', { className: 'form-control', value: this.state.listName, placeholder: 'List Name', onChange: this.handleChange }),
-				_react2.default.createElement(
-					'button',
-					{ type: 'submit', className: 'btn btn-primary' },
-					'Submit'
-				)
-			);
-		}
-	});
-	
-	exports.default = AddList;
-
-/***/ },
-/* 163 */
 /***/ function(module, exports) {
 
 	/*! @license Firebase v2.3.2
@@ -20256,6 +20195,67 @@
 	
 	module.exports = Firebase;
 
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var AddList = _react2.default.createClass({
+		displayName: 'AddList',
+		getInitialState: function getInitialState() {
+			return {
+				listName: ''
+			};
+		},
+		handleChange: function handleChange(e) {
+			this.setState({
+				listName: e.target.value
+			});
+		},
+		handleSubmit: function handleSubmit(e) {
+			e.preventDefault();
+			this.props.add(this.state);
+			this.setState({
+				listName: ''
+			});
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				'form',
+				{ className: 'col-sm-6', onSubmit: this.handleSubmit },
+				_react2.default.createElement(
+					'h3',
+					{ className: 'text-center' },
+					'Create New List'
+				),
+				_react2.default.createElement(
+					'p',
+					null,
+					'List Name:'
+				),
+				_react2.default.createElement('input', { className: 'form-control', value: this.state.listName, placeholder: 'List Name', onChange: this.handleChange }),
+				_react2.default.createElement(
+					'button',
+					{ type: 'submit', className: 'btn btn-primary' },
+					'Submit'
+				)
+			);
+		}
+	});
+	
+	exports.default = AddList;
 
 /***/ }
 /******/ ]);
