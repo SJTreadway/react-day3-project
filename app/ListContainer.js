@@ -1,6 +1,7 @@
 import React from 'react';
 import AddItem from './AddItem';
 import List from './List';
+import Firebase from 'firebase';
 
 var ListContainer = React.createClass({
 	getInitialState() {
@@ -9,18 +10,34 @@ var ListContainer = React.createClass({
 		};
 	},
 
+	componentDidMount() {
+		this.firebaseRef = new Firebase('https://sjt-todo.firebaseio.com');
+		this.firebaseRef.on('child_added', (snapshot) => {
+			this.setState({
+				list: this.state.list.concat({
+					key: snapshot.key(),
+					val: snapshot.val()
+				})
+			})
+		});
+		this.firebaseRef.on('child_removed', (snapshot) => {
+			const key = snapshot.key();
+			const newList = this.state.list.filter((item) => {
+				return item.key !== key;
+			})
+			this.setState({
+				list: newList
+			});
+		});
+	},
+
 	handleAddItem(newItem) {
-		this.setState({
-			list: this.state.list.concat(newItem)
-		})
+		this.firebaseRef.push(newItem)
 	},
 
 	handleRemoveItem(i) {
-		var arrCopy = this.state.list.slice();
-		arrCopy.splice(i, 1);
-		this.setState({
-			list: arrCopy
-		})
+		const item = this.state.list[i];
+		this.firebaseRef.child(item.key).remove();
 	},
 
 	render() {
@@ -44,7 +61,7 @@ var ListContainer = React.createClass({
 	        	<span className="glyphicon glyphicon-remove" style={styles.remove} onClick={this.props.remove}></span>
 	        	<h3 className="text-center"> {this.props.title} </h3>
 	        	<AddItem add={this.handleAddItem}/>
-	        	<List items={this.state.list} remove={this.handleRemoveItem}/>
+	        	<List items={this.state.list.map((item) => {return item.val})} remove={this.handleRemoveItem}/>
 	        </div>
 	      </div>
 		)
