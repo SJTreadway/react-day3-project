@@ -1,6 +1,6 @@
 import React from 'react';
 
-var AddItem = React.createClass({
+const AddItem = React.createClass({
 	getInitialState() {
 		return {
 			newItem: ''

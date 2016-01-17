@@ -1,6 +1,6 @@
 import React from 'react';
 
-var AddList = React.createClass({
+const AddList = React.createClass({
 	getInitialState() {
 		return {
 			listName: ''	

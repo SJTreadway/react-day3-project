@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ListContainer from './ListContainer';
 import AddList from './AddList';
 
-var App = React.createClass({
+const App = React.createClass({
 	getInitialState() {
 		return {
 			lists: []
@@ -20,7 +20,7 @@ var App = React.createClass({
 	},
 
 	handleRemoveList(index) {
-		var newLists = this.state.lists;
+		const newLists = this.state.lists;
 		newLists.splice(index, 1);
 		this.setState({
 			lists: newLists
@@ -28,7 +28,7 @@ var App = React.createClass({
 	},
 
 	render() {
-		var componentList = this.state.lists.map((item, index) => {
+		const componentList = this.state.lists.map((item, index) => {
 			return <ListContainer title={item.newTitle} index={index} key={item.index} remove={this.handleRemoveList} />
 		});
 

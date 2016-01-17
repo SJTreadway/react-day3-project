@@ -3,7 +3,7 @@ import AddItem from './AddItem';
 import List from './List';
 import Firebase from 'firebase';
 
-var ListContainer = React.createClass({
+const ListContainer = React.createClass({
 	getInitialState() {
 		return {
 			list: []
@@ -41,7 +41,7 @@ var ListContainer = React.createClass({
 	},
 
 	render() {
-		var styles = {
+		const styles = {
 			container: {
 			    border: "1px solid rgb(208, 208, 208)",
 			    marginTop: 10,

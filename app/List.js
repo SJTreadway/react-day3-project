@@ -1,8 +1,8 @@
 import React from 'react';
 
-var List = React.createClass({
+const List = React.createClass({
 	render() {
-		var styles = {
+		const styles = {
 		  uList: {
 		    paddingLeft: 0,
 		    listStyleType: "none"
@@ -30,10 +30,10 @@ var List = React.createClass({
 		=> is an Arrow Function. Binds 'this' to the outer scope. Used here instead of .bind()
 		*************************************************************************************/
 
-		var listItems = this.props.items.map((item, i) => {
+		const listItems = this.props.items.map((item, index) => {
 			return (
-				<li className="list-group-item" style={styles.listGroup} key={i}>
-					<span className="glyphicon glyphicon-remove" style={styles.removeItem} onClick={this.props.remove.bind(null, i)}></span>
+				<li className="list-group-item" style={styles.listGroup} key={index}>
+					<span className="glyphicon glyphicon-remove" style={styles.removeItem} onClick={this.props.remove.bind(null, index)}></span>
 					<span style={styles.todoItem}>{item}</span>
 				</li>
 			)
